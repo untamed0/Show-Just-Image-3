@@ -1,13 +1,15 @@
 // ==UserScript==
 // @name		Show Just Image 3
 // @description	Removes garbage from some image hosting sites and displays the image only. Updated version of timendums script.
-// @version		3.1.0
+// @version		3.1.1
 // @author		untamed0, timendum, n5zhkyln
-// @contributors	a1270A, Awemonster, Bgmin0t, Blinkiz, Farbio, henry99a, hpo14, kasper93, kekal, krad, LazieAlex, Loserfreak, lsdgribs, Maija, Marti, No Nay Never, Rulac, Stealthx, Sum Guy, treas0n, zumlin
+// @contributors	a1270A, Awemonster, Bgmin0t, Blinkiz, Dither, Farbio, henry99a, hpo14, kasper93, kekal, krad, LazieAlex, Loserfreak, lsdgribs, Maija, Marti, No Nay Never, Rulac, Stealthx, Sum Guy, treas0n, zumlin
 // @require		http://usocheckup.dune.net/109890.js?id=usoCheckup&maxage=7&topicid=84474
 // @require		http://userscripts.org/scripts/source/82206.user.js
 // @license		GPL v3 or any later version; http://www.gnu.org/copyleft/gpl.html
 // @icon		http://i56.tinypic.com/2wqtk00.png
+// @grant		GM_getValue
+// @grant		GM_setValue
 // @include		http://www.10pix.ru/view/*/*
 // @include		http://www.4freeimagehost.com/show.php?i=*
 // @include		http://4walled.org/show-*
@@ -28,6 +30,7 @@
 // @include		http://www.bilder-upload.eu/show.php?file=*
 // @include		http://bildr.no/view/*
 // @include		http://*.bildr.no/view/*
+// @include		http://bildupload.sro.at/*/*
 // @include		http://*.blogimagehost.com/view/*/*.html
 // @include		http://*.blogimagehost.com/view.php/*.html
 // @include		http://*.bp.blogspot.com/*/*/*/*/*-h/*
@@ -42,6 +45,7 @@
 // @include		http://www.casimages.com/img.php?i=*
 // @include		http://www.castawayimage.com/viewer.php?file=*
 // @include		http://celebslam.celebuzz.com/*/*/*
+// @include		http://celebimg.com/view.php?filename=*
 // @include		http://upload.centerzone.it/viewer.php?file=*
 // @include		http://chickupload.com/showpicture/*/*/*
 // @include		http://*.chickupload.com/showpicture/*/*/*
@@ -58,6 +62,7 @@
 // @include		http://depic.me/*
 // @include		http://www.desiupload.com/show.php/*.html
 // @include		http://diabloo.net/show-image.php?id=*
+// @include		http://dippic.com/*
 // @include		http://*.directupload.net/file/*.htm
 // @include		http://dlportal.eu/show.php/*.html
 // @include		http://download.su/photo/*
@@ -94,6 +99,7 @@
 // @include		http://*.fotoupload.ru/share-*
 // @include		http://www.freakyimagehost.com/show.php/*.html
 // @include		http://*.freebunker.com/img/*
+// @include		http://*.freeimage.us/share.php?id=*
 // @include		http://freeimagehosting.net/image.php?*
 // @include		http://www.freeimagehosting.net/image.php?*
 // @include		http://freepicninja.com/view.php?*
@@ -143,6 +149,8 @@
 // @include		http://imagebin.org/*
 // @include		http://imageboss.net/view/*
 // @include		http://*.imageboss.net/view/*
+// @include		http://imagebunk.com/image/*
+// @include		http://imagebunk.com/imagewaste/*
 // @include		http://www.imagecross.com/*/*
 // @include		http://imagedoza.com/i.cc/*
 // @include		http://imagedunk.com/*/*.html
@@ -206,7 +214,8 @@
 // @include		http://www.img-teufel.de/img_*.html
 // @include		http://img-vidiklub.com/viewer.php?*
 // @include		http://*.img-vidiklub.com/viewer.php?*
-// @include		/^http:\/\/imgbox\.com\/[\w]{8}$/
+// @exclude		http://imgbox.com/g/*
+// @include		http://imgbox.com/*
 // @include		http://www.imgbox.de/show/img/*
 // @include		http://imgchili.com/viewer.php?*
 // @include		http://imgchili.com/show/*
@@ -255,6 +264,7 @@
 // @include		http://miragepics.com/viewer.php*
 // @include		http://monkeypics.net/viewer.php?file=*
 // @include		http://motherless.com/*
+// @include		http://www.moyophoto.com/share.php?id=*
 // @include		http://mrjh.org/gallery.php?entry=images/*
 // @include		http://*.mrjh.org/gallery.php?entry=images/*
 // @include		http://www.my-photo.ru/photo.php?*
@@ -299,6 +309,7 @@
 // @include		http://pics-hosting.com/viewer.php?file=*
 // @include		http://*.pics-hosting.com/viewer.php?file=*
 // @include		http://pics.roomsapp.mobi/*
+// @include		http://www.picsarus.com/*
 // @include		http://*.picscrazy.com/view/*
 // @include		http://picsee.net/*/*.html
 // @include		http://www.picturez.biz/?img=*
@@ -317,6 +328,7 @@
 // @include		http://pixelup.net/image.html?*
 // @include		http://*.pixelup.net/image.html?*
 // @include		http://*.pixhost.org/show/*
+// @include		http://pixhub.eu/images/show/*
 // @include		http://pixmaster.net/viewer.php?file=*
 // @include		http://pixmix.me/show.php/*.html
 // @include		http://pixoplenty.com/show.php/*
@@ -345,6 +357,7 @@
 // @include		http://www.screencity.pl/go,*
 // @include		http://screenlist.ru/details.php?image_id=*
 // @include		http://www.seedimage.com/show.php/*.html
+// @include		http://selfshot.in/blog/*/*/*/*
 // @include		http://sexyshare.net/image/*.html 
 // @include		http://shabswp.ru/?v=*
 // @include		http://www.share-image.com/*/*/*
@@ -405,6 +418,7 @@
 // @include		http://yfrog.com/*
 // @include		http://*.yfrog.com/*
 // @include		http://youpics.ru/viewer.php?file*
+// @include		http://www.yourfreeporn.us/showimage.asp?im=*
 // @include		http://yourimage.name/*/
 // @include		http://*.yourimage.name/*/
 // @include		http://x05.org/show.php/*
@@ -438,10 +452,12 @@ var ibv, EmbededView, viewImageSHI;
 var hId = function(id){ return document.getElementById(id); };
 var hXP = function(pat) { return document.evaluate(pat, document, null, 9, null).singleNodeValue; };
 var hXPV = function(pat) { return hXP(pat).value; };
+var hSel = function (selector) { return document.querySelector(selector); };
 // getter
 var byId = function(id){ img = document.getElementById(id) || img; return img; };
 var byXP = function(pat) { img = hXP(pat) || img; return img; };
 var byXPV = function(pat) { imgURL = hXPV(pat) || imgURL; return imgURL; };
+var bySel = function (selector) { img = hSel(selector) || img; return img; };
 
 var timedSearchImage = function(searchImageF) {
 	var timeFunction = function() {
@@ -456,7 +472,7 @@ var timedSearchImage = function(searchImageF) {
 };
 
 
-var preferences = "0|0|0|0|#FFFFFF";
+var preferences = "0|0|0|0|#222222";
 if (typeof GM_getValue != 'undefined') {
 	var preferences = GM_getValue('pref', preferences) || preferences;
 	var prefArray = preferences.split('|'); 
@@ -697,7 +713,7 @@ function viewImageSHI() {
 		this.originalHeight = this.image.naturalHeight || this.image.height;
 
 		if (centerImg) {
-			this.image.setAttribute('style', 'display: block; margin: ' + this.margin + 'px auto');
+			this.image.setAttribute('style', 'text-align: center; position: absolute; margin: auto; top: 0; right: 0; bottom: 0; left: 0;');
 			if (hId('urlImage')) {
 				hId('urlImage').setAttribute('style','text-align: center;');
 			}
@@ -748,7 +764,7 @@ function viewImageSHI() {
 }
 
 // MAIN SCRIPT STARTS HERE
-var domain = location.hostname.match('([^\.]+)\.(be|biz|ca|cc|com|de|dk|eu|gr|hu|in|info|it|me|mobi|ms|name|net|no|nu|org|pl|ro|ru|se|su|to|ua|us|ws)$');
+var domain = location.hostname.match('([^\.]+)\.(at|be|biz|ca|cc|com|de|dk|eu|gr|hu|in|info|it|me|mobi|ms|name|net|no|nu|org|pl|ro|ru|se|su|to|ua|us|ws)$');
 
 if (domain) {
 	switch (domain[0]) {
@@ -775,8 +791,8 @@ if (domain) {
 			byXP('//body/center/table/tbody/tr/td/a/img');
 			break;
 		case 'badimg.com':
+		case 'celebimg.com':
 		case 'imagebb.org':
-		case 'imagezilla.net':
 		case 'picley.net':
 			byId('photo');
 			break;
@@ -797,7 +813,10 @@ if (domain) {
 			byXP('//input[@type="image"]');
 			break;
 		case 'bildr.no':
-			byXP('//div[@id="view"]/img[@class="bilde"]');
+			byXP('//div[@id="view"]/a/img[@class="bilde"]');
+			break;
+		case 'sro.at':
+			byXP('id("Content")/img');
 			break;
 		case 'blogspot.com':
 			byXP('//body/img');
@@ -867,8 +886,11 @@ if (domain) {
 		case 'diabloo.net':
 			byXP('//center/b/a/img');
 			break;
+		case 'dippic.com':
+			byXP('id("gallery")/a');
+			break;
 		case 'directupload.net':
-			byId('Bild');
+			byXP('//div[@class="wraptocenter_big"]//*[self::img or self::input[@type="image"]]');
 			break;
 		case 'download.su':
 			byId('thepic');
@@ -930,7 +952,7 @@ if (domain) {
 			break;
 		case 'flickr.com':
 			if (location.href.match(/\/sizes\//)) {
-				var original = hXP('//a[contains(@href, "/sizes/o/")]');
+				var original = hXP('//a[contains(@href, "/sizes/k/")]');
 				if (original) {
 					location.replace(original.href);
 				} else {
@@ -960,6 +982,9 @@ if (domain) {
 			break;
 		case 'fotohosting.net':
 			byXP('//a[@id="fancybox"]/img');
+			break;
+		case 'freeimage.us':
+			byXP('id("share_image")/img');
 			break;
 		case 'freeimagehosting.net':
 			byXP('//body/center/table//tr[2]/td/table//img');
@@ -1073,6 +1098,10 @@ if (domain) {
 		case 'imageboss.net':
 			byId('thepic');
 			break;
+		case 'imagebunk.com':
+			needImgTag = true;
+			byId('img_obj');
+			break;
 		case 'imagecross.com':
 			byId('thepic');
 			break;
@@ -1175,6 +1204,10 @@ if (domain) {
 		case 'imagewaste.com':
 			needImgTag = true;
 			byXP('//div[@class="imagebox"]/table/tbody/tr/td/img');
+			break;
+		case 'imagezilla.net':
+			needImgTag = true;
+			byId('photo');
 			break;
 		case 'imaxenes.com':
 			needImgTag = true;
@@ -1280,7 +1313,7 @@ if (domain) {
 			location.replace(byId('content').src);
 			break;
 		case 'lostpic.net':
-			byXP('//div[@class="caser"]/div/a/img[@class="notinline"]')
+			byXP('//img[@class="notinline circle"]')
 			break;
 		case 'min.us':
 			timedSearchImage(function() {
@@ -1299,6 +1332,9 @@ if (domain) {
 			if (!img) {
 				byXPV('//a[contains(@href,"?full")][img]/@href');
 			}
+			break;
+		case 'moyophoto.com':
+			byId('iimg');
 			break;
 		case 'mrjh.org':
 			byXP('//table[@bordercolor="#999999"]/tbody/tr/td/img');
@@ -1399,6 +1435,9 @@ if (domain) {
 				submit.form.submit();
 			}
 			break;
+		case 'picsarus.com':
+			byXP('//div[contains(@class,"main-content")]/div/a/img');
+			break;
 		case 'picscrazy.com':
 			byXP('//td[@align="center"]/img');
 			break;
@@ -1436,6 +1475,9 @@ if (domain) {
 			needImgTag = true;
 			img = hId('show_image') || hXP('//div[@id="text"]/div/table/tbody/tr/td/img');
 			break;
+		case 'pixhub.eu':
+			byXP('//div[@class="image-show resize"]/img');
+			break;
 		case 'pixroute.com':
 			// see imageporter.com
 			needImgTag = true;
@@ -1455,7 +1497,7 @@ if (domain) {
 			img = hId('photo') || hXP('//div[@class="img_box"]/a[@title]/img');
 			break;
 		case 'postimage.org':
-			img = hXP('//body/center/img') || hXP('//body/center/a');
+			byXP('//center/a/img');
 			break;
 		case 'postimg.com':
 			byId('image');
@@ -1482,6 +1524,9 @@ if (domain) {
 		case 'screenlist.ru':
 			byId('picture');
 			try { titleEmbededView = location.href.match(/_id=(.+)$/i)[1]; } catch(e) {;}
+			break;
+		case 'selfshot.in':
+			byXP('//div[@class="single-post"]/p/a/img');
 			break;
 		case 'sexyshare.net':
 			imgURL = atob(location.pathname.substring(location.pathname.lastIndexOf('/')+1,location.pathname.lastIndexOf('.')));
@@ -1632,6 +1677,9 @@ if (domain) {
 			break;
 		case 'youpics.ru':
 			byXP('//div[@class="text_align_center"]/a/img');
+			break;
+		case 'yourfreeporn.us':
+			byXP('//div[@class="bcontent"]/center/img');
 			break;
 		case 'yourimage.name':
 			if (location.href.match(/\/full\//)) {
