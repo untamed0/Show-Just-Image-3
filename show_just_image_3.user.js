@@ -1506,7 +1506,7 @@ if (domain) {
 			byXP('//img[@class="shot"]');
 			break;
 		case 'radikal.ru':
-			byXP('//div[@class="topp"]/table/tbody/tr/td/div/div/img');
+			byXP('//link[@rel="image_src"]');
 			break;
 		case 'rghost.net':
 			byXP('//body/div/div/div/center/a/img');
