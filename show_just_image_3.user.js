@@ -1321,7 +1321,7 @@ if (domain) {
 			});
 			break;
 		case 'miragepics.com':
-			byXP('//a/img[@alt]');
+			byXP('//a/img[@style]');
 			try { titleEmbededView = img.alt; } catch(e) {;}
 			break;
 		case 'monkeypics.net':
