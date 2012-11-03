@@ -349,6 +349,7 @@
 // @include		http://postimg.com/image/*
 // @include		http://*.postimg.com/image/*
 // @include		http://prntscr.com/*
+// @include		http://pussyjet.com/boobs/*
 // @include		http://r70.info/viewer.php?file=*
 // @include		http://radikal.ru/F/*
 // @include		http://*.radikal.ru/F/*
@@ -1504,6 +1505,9 @@ if (domain) {
 			break;
 		case 'prntscr.com':
 			byXP('//img[@class="shot"]');
+			break;
+		case 'pussyjet.com':
+			byXP('//a/img[contains(@class,"wp-image-")]');
 			break;
 		case 'radikal.ru':
 			byXP('//link[@rel="image_src"]');
