@@ -152,6 +152,7 @@
 // @include		http://imagebunk.com/image/*
 // @include		http://imagebunk.com/imagewaste/*
 // @include		http://www.imagecross.com/*/*
+// @include		http://imagecurl.com/viewer.php?file=*
 // @include		http://imagedoza.com/i.cc/*
 // @include		http://imagedunk.com/*/*.html
 // @include		http://*.imagedunk.com/*/*.html
@@ -1106,6 +1107,10 @@ if (domain) {
 			break;
 		case 'imagecross.com':
 			byId('thepic');
+			break;
+		case 'imagecurl.com':
+			showimg_now();
+			byXP('//div[@id="image_view"]/a/img');
 			break;
 		case 'imagedoza.com':
 			needImgTag = true;
