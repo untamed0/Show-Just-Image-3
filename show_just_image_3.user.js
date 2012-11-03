@@ -265,6 +265,7 @@
 // @include		http://monkeypics.net/viewer.php?file=*
 // @include		http://motherless.com/*
 // @include		http://www.moyophoto.com/share.php?id=*
+// @include		http://www.moyophoto.com/share-*
 // @include		http://mrjh.org/gallery.php?entry=images/*
 // @include		http://*.mrjh.org/gallery.php?entry=images/*
 // @include		http://www.my-photo.ru/photo.php?*
