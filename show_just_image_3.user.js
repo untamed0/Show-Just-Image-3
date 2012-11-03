@@ -1109,8 +1109,7 @@ if (domain) {
 			byId('thepic');
 			break;
 		case 'imagecurl.com':
-			showimg_now();
-			byXP('//div[@id="image_view"]/a/img');
+			location.href = location.href.replace(/viewer.php\?file\=/, 'images/');
 			break;
 		case 'imagedoza.com':
 			needImgTag = true;
